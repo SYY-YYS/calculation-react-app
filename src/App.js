@@ -1,12 +1,15 @@
 import './App.css';
-import abacusMode from './math.js'
+import LoginPage from './login';
+import Mathapp from './mathapp';
 
 function App() {
+  let loggedin = true;
   return (
-    <div className="App">
+    <>
+      {loggedin && <LoginPage/>}
+      {!loggedin && <Mathapp/>}
       
-
-    </div>
+    </>
   );
 }
 
