@@ -1,4 +1,4 @@
-import React from 'react';
+import {React, useState} from 'react';
 import {
   BrowserRouter as Router,
   Routes,
@@ -12,13 +12,16 @@ import Home from './home';
 
 function App() {
   // let loggedin = true;
+
+  const [loggedin, setloggedin] = useState(false);
+
   return (
     <>
       <Router>
         <Routes>
-          <Route path='/' element={<Home />}></Route>
-          <Route exact path='/login' element={<LoginPage />}></Route>
-          <Route path='/mathapp' element={<Mathapp />}></Route>
+          <Route path='/' element={<Home loggedin={loggedin} setloggedin={setloggedin}/>}></Route>
+          <Route exact path='/login' element={<LoginPage loggedin={loggedin} setloggedin={setloggedin}/>}></Route>
+          <Route path='/mathapp' element={<Mathapp loggedin={loggedin} setloggedin={setloggedin}/>}></Route>
           <Route path='*' element={<Navigate to='/' />}></Route>
         </Routes>
       </Router>

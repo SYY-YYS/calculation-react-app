@@ -1,7 +1,9 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import LogoutButton from './logout';
 
-function Mathapp() {
+function Mathapp({loggedin, setloggedin}) {
 
     async function sendData() {
         await axios.get('http://localhost:8030/dataOperation', {withCredentials: true})
@@ -20,6 +22,10 @@ function Mathapp() {
             <button onClick={sendData}>
                 submit
             </button>
+            {loggedin && <LogoutButton setloggedin={setloggedin}/>}
+            {!loggedin && <button>
+                <Link to="/login">Login</Link>
+            </button>}
             </div>
             {/* <i className='fa fa-bars'></i> */}
             <div className='turn-abacus'>
