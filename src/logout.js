@@ -24,7 +24,7 @@ function LogoutButton ({setloggedin}) {
   
     return(
         
-        <button onClick={logout}>
+        <button id='logoutbtn' onClick={logout}>
             Logout
         </button>
         

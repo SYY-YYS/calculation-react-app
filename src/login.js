@@ -3,47 +3,11 @@ import axios from 'axios';
 import { redirect } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-
-// class LoginForm extends React.Component{
-//   constructor(props) {
-//     super(props);
-//     this.state = {username: "", password: ''}
-//     // const [name, setname] = useState('');
-//     // const [password, setpassword] = useState('');
-
-//     this.handleChange = this.handleChange.bind(this);
-//     this.handleSubmit = this.handleSubmit.bind(this);
-//   }
-  
-//   handleChange(event) {
-//     const select = event.target.name;
-//     this.setState({[select]: event.target.value});
-//   }
-
-//     render(){
-//     return(
-//       <>
-      
-//       <h1>Login Page</h1>
-//         <form >
-//           <div className='input-group'>
-//             <label>Username:
-//               <input type='text' name='username' value={this.state.name} onChange={this.handleChange}></input>
-//             </label>
-//             <br></br>
-//             <label>Password:
-//               <input type='password' name='password' value={this.state.password} onChange={this.handleChange}></input>
-//             </label>
-//             <br></br>
-//             <input type='submit' value="Submit"></input>
-//           </div>
-//         </form>
-//       </>
-//     );}
-  
-// }
+import { checkLoggedin } from './App';
 
 function LoginPage({loggedin, setloggedin}){
+
+  checkLoggedin(setloggedin)
 
   const [username, setusername] = useState("")
   const [password, setpassword] = useState("") 
@@ -75,21 +39,28 @@ function LoginPage({loggedin, setloggedin}){
   } 
   return(
     <>
-      <h1>Login Page</h1>
+      {!loggedin &&<div>
+        <h1>Login Page</h1>
         <form onSubmit={submitForm}>
           <div className='input-group'>
             <label>Username:
-              <input type='text' name='username' onChange={e => {setusername(e.target.value)}}></input>
+              <input required type='text' name='username' onChange={e => {setusername(e.target.value)}}></input>
             </label>
             <br></br>
             <label>Password:
-              <input type='password' name='password' onChange={e => {setpassword(e.target.value)}}></input>
+              <input required type='password' name='password' onChange={e => {setpassword(e.target.value)}}></input>
             </label>
             <br></br>
             <input type='submit' value="Submit"></input>
           </div>
         </form>
-      
+      </div>}
+      {loggedin}
+      {loggedin && <div>
+        <h1>Welcome, you have logged in</h1>
+        <Link to="/mathapp">Mathapp</Link>
+        <Link to="/home">Home</Link>
+        </div>}
     </>
   )
 }
