@@ -55,7 +55,9 @@ function LoginPage({backendUrl, loggedin, setloggedin}){
           </div>
         </form>
       </div>}
-      {loggedin}
+      {!loggedin && 
+      <Link to="/register">Register</Link>
+      }
       {loggedin && <div>
         <h1>Welcome, you have logged in</h1>
         <Link to="/mathapp">Mathapp</Link>
