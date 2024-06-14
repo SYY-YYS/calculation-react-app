@@ -38,7 +38,7 @@ function App() {
   const [loggedin, setloggedin] = useState(false);
   
 
-  const backendUrl = 'http://localhost:8030';
+  const backendUrl = process.env.REACT_APP_Backend_URL;
 
   return (
     <>
