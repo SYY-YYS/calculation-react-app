@@ -6,9 +6,9 @@ import { Link } from 'react-router-dom';
 import { checkLoggedin } from './App';
 
 
-function RegisterPage({loggedin, setloggedin}){
+function RegisterPage({backendUrl, loggedin, setloggedin}){
 
-  checkLoggedin(setloggedin)
+  checkLoggedin(setloggedin, backendUrl)
 
   const navigate = useNavigate();
 
@@ -22,7 +22,7 @@ function RegisterPage({loggedin, setloggedin}){
     event.preventDefault();
     console.log(username, email, password)
     const userData = {username:username, email: email, password: password};
-    await axios.post('http://localhost:8030/register', userData, {
+    await axios.post(backendUrl + '/register', userData, {
       withCredentials: true,
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'

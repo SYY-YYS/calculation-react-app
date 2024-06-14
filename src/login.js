@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 
 import { checkLoggedin } from './App';
 
-function LoginPage({loggedin, setloggedin}){
+function LoginPage({backendUrl, loggedin, setloggedin}){
 
-  checkLoggedin(setloggedin)
+  checkLoggedin(setloggedin, backendUrl)
 
   const [username, setusername] = useState("")
   const [password, setpassword] = useState("") 
@@ -17,7 +17,7 @@ function LoginPage({loggedin, setloggedin}){
     event.preventDefault();
     console.log(username, password)
     const userData = {username:username, password: password};
-    await axios.post('http://localhost:8030/login', userData, {
+    await axios.post(backendUrl + '/login', userData, {
       withCredentials: true,
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'

@@ -5,7 +5,7 @@ import LogoutButton from './logout';
 import './math.css'
 import { checkLoggedin } from './App';
 
-function Mathapp({loggedin, setloggedin}) {
+function Mathapp({backendUrl, loggedin, setloggedin}) {
 
     // async function sendData() {
     //     await axios.get('http://localhost:8030/dataOperation', {withCredentials: true})
@@ -19,7 +19,7 @@ function Mathapp({loggedin, setloggedin}) {
    
     // var document = useRef();
     
-    checkLoggedin(setloggedin)
+    checkLoggedin(setloggedin, backendUrl)
 
 
     const [noq, setnoq] = useState('');
@@ -226,10 +226,11 @@ function Mathapp({loggedin, setloggedin}) {
                 let truetimeList = [...timeList,timediff]
                 let minTime = Math.min(...truetimeList);
                 let sumoftime = truetimeList.reduce((x,y)=> {return x + y}, 0);
-                let averagetime = sumoftime/truetimeList.length;
-                console.log(minTime, averagetime, truetimeList.length)
+                let averagetime = Math.round(sumoftime/truetimeList.length*1000)/1000;
+                console.log(minTime, averagetime, truetimeList)
 
                 settimeList([])
+                settimestop(0)
                 if(loggedin){
                     let dataSending = {
                         timesOfCalculating : noo, 
@@ -238,7 +239,7 @@ function Mathapp({loggedin, setloggedin}) {
                         trialnumber: truetimeList.length
                     }
                     
-                    await axios.post('http://localhost:8030/dataOperation/update', dataSending, {
+                    await axios.post(backendUrl + '/dataOperation/update', dataSending, {
                         withCredentials: true,
                         headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'
@@ -292,7 +293,7 @@ function Mathapp({loggedin, setloggedin}) {
             </div>
 
             <div className={hide? "input-setting" : "input-setting hide"}>
-            {loggedin && <LogoutButton setloggedin={setloggedin}/>}
+            {loggedin && <LogoutButton backendUrl={backendUrl} setloggedin={setloggedin}/>}
             {!loggedin && 
                 <Link to="/login">Login</Link>
             }

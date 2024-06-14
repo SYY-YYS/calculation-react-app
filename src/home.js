@@ -4,15 +4,15 @@ import LogoutButton from './logout';
 
 import { checkLoggedin } from './App';
 
-function Home({loggedin, setloggedin}) {
+function Home({backendUrl, loggedin, setloggedin}) {
 
-  checkLoggedin(setloggedin)
+  checkLoggedin(setloggedin, backendUrl)
   
   return(
     <>
         <h1 style={{display: 'flex'}}>
           Home Page
-        {loggedin && <LogoutButton setloggedin={setloggedin}/>}
+        {loggedin && <LogoutButton backendUrl={backendUrl} setloggedin={setloggedin}/>}
         {!loggedin && <button>
             <Link to="/login">Login</Link>
         </button>}
@@ -20,6 +20,9 @@ function Home({loggedin, setloggedin}) {
         <ul>
             <li>
                 <Link to="/mathapp">Mathapp</Link>
+            </li>
+            <li>
+                <Link to="/userprofile">UserProfile</Link>
             </li>
         </ul>
     </>

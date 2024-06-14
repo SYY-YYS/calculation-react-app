@@ -2,10 +2,10 @@ import React from 'react';
 import axios from 'axios';
 
 
-function LogoutButton ({setloggedin}) {
+function LogoutButton ({backendUrl, setloggedin}) {
     
     async function logout() {
-        await axios.post("http://localhost:8030/logout",{}, {
+        await axios.post(backendUrl + "/logout",{}, {
             withCredentials: true,
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
