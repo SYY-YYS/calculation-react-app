@@ -1,4 +1,4 @@
-import {React, useState} from 'react';
+import {React, useEffect, useState} from 'react';
 import axios from 'axios';
 import { redirect } from 'react-router-dom';
 import { Link } from 'react-router-dom';
@@ -7,7 +7,10 @@ import { checkLoggedin } from './App';
 
 function LoginPage({backendUrl, loggedin, setloggedin}){
 
-  checkLoggedin(setloggedin, backendUrl)
+  useEffect(()=>{
+    checkLoggedin(setloggedin, backendUrl)
+  },[])
+  
 
   const [username, setusername] = useState("")
   const [password, setpassword] = useState("") 

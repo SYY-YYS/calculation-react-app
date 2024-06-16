@@ -1,4 +1,4 @@
-import {React, useState} from 'react';
+import {React, useState, useEffect} from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
@@ -8,7 +8,9 @@ import { checkLoggedin } from './App';
 
 function RegisterPage({backendUrl, loggedin, setloggedin}){
 
-  checkLoggedin(setloggedin, backendUrl)
+  useEffect(()=>{
+    checkLoggedin(setloggedin, backendUrl)
+  },[])
 
   const navigate = useNavigate();
 

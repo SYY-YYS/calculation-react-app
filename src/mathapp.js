@@ -1,4 +1,4 @@
-import {React, useState, useRef} from 'react';
+import {React, useState, useRef, useEffect} from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import LogoutButton from './logout';
@@ -19,7 +19,7 @@ function Mathapp({backendUrl, loggedin, setloggedin}) {
    
     // var document = useRef();
     
-    checkLoggedin(setloggedin, backendUrl)
+    
 
 
     const [noq, setnoq] = useState('');
@@ -38,6 +38,10 @@ function Mathapp({backendUrl, loggedin, setloggedin}) {
 
     const turningLocation = useRef();
     const answerInput = useRef();
+
+    useEffect(()=> {
+        checkLoggedin(setloggedin, backendUrl)
+    }, [startTime])
 
     function handleKeyDown (event) {
         // console.log(event.key)
@@ -231,6 +235,7 @@ function Mathapp({backendUrl, loggedin, setloggedin}) {
 
                 settimeList([])
                 settimestop(0)
+                setstartTime(0)
                 if(loggedin){
                     let dataSending = {
                         timesOfCalculating : noo, 
@@ -254,6 +259,8 @@ function Mathapp({backendUrl, loggedin, setloggedin}) {
                     }).catch((err) => {
                         console.log('hvnt logged in')
                     })
+                } else {
+
                 }
      
                 

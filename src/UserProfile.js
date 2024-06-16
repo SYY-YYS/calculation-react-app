@@ -10,7 +10,7 @@ import axios from 'axios';
 
 function UserProfile({backendUrl, loggedin, setloggedin}) {
 
-  checkLoggedin(setloggedin, backendUrl)
+  
 
   const [username, setusername] = useState('');
   const [minTime, setminTime] = useState('');
@@ -18,6 +18,7 @@ function UserProfile({backendUrl, loggedin, setloggedin}) {
   const [totaltrialnumber, settotaltrialnumber] = useState('');
 
   useEffect(()=>{
+    checkLoggedin(setloggedin, backendUrl)
     async function fetchData(){
         await axios.get(backendUrl + '/userProfile',{withCredentials: true})
         .then((res)=> {
