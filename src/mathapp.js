@@ -2,7 +2,6 @@ import {React, useState, useRef, useEffect} from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import LogoutButton from './logout';
-import './math.css'
 import { checkLoggedin } from './App';
 
 function Mathapp({backendUrl, loggedin, setloggedin}) {
