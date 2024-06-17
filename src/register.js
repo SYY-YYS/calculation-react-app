@@ -1,9 +1,11 @@
-import {React, useState, useEffect} from 'react';
+import {React, useState, useEffect, useContext} from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-import { checkLoggedin } from './App';
+import { checkLoggedin, CommonContext } from './App';
+
+import LoadingPage from './loading';
 
 
 function RegisterPage({backendUrl, loggedin, setloggedin}){
@@ -18,7 +20,7 @@ function RegisterPage({backendUrl, loggedin, setloggedin}){
   const [email, setemail] = useState('')
   const [password, setpassword] = useState("") 
   const [passwordCheck, setpasswordCheck] = useState('')
-
+  const {loading, setloading} = useContext(CommonContext)
 
   async function submitForm(event) {
     event.preventDefault();
@@ -57,6 +59,7 @@ function RegisterPage({backendUrl, loggedin, setloggedin}){
 
   return(
     <>
+      {loading && <LoadingPage text={'Loading...'}/>}
       {!loggedin &&<div>
         <h1>Register Page</h1>
         <form onSubmit={submitForm}>

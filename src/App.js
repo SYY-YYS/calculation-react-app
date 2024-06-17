@@ -1,4 +1,4 @@
-import {React, useState} from 'react';
+import {React, useState, createContext} from 'react';
 import {
   HashRouter as Router,
   Routes,
@@ -13,7 +13,7 @@ import RegisterPage from './register';
 import UserProfile from './UserProfile';
 import axios from 'axios';
 
-
+export const CommonContext = createContext()
 
 
 export async function checkLoggedin(setloggedin, backendUrl) {
@@ -37,12 +37,14 @@ function App() {
   // let loggedin = true;
 
   const [loggedin, setloggedin] = useState(false);
+  const [loading, setloading] = useState(false);
   
 
   const backendUrl = process.env.REACT_APP_Backend_URL;
 
   return (
     <>
+    <CommonContext.Provider value={{loading, setloading}}>
       <Router>
         <Routes>
           <Route path='/' element={<Home backendUrl={backendUrl} loggedin={loggedin} setloggedin={setloggedin}/>}></Route>
@@ -53,7 +55,7 @@ function App() {
           <Route path='*' element={<Navigate to='/' />}></Route>
         </Routes>
       </Router>
-      
+    </CommonContext.Provider>
     </>
   );
 }

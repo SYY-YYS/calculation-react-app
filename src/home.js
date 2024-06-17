@@ -21,9 +21,9 @@ function Home({backendUrl, loggedin, setloggedin}) {
             <li>
                 <Link to="/mathapp">Mathapp</Link>
             </li>
-            <li>
+            {loggedin && <li>
                 <Link to="/userprofile">UserProfile</Link>
-            </li>
+            </li>}
         </ul>
     </>
   );

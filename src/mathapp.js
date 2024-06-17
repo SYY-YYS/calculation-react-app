@@ -1,8 +1,10 @@
-import {React, useState, useRef, useEffect} from 'react';
+import {React, useState, useRef, useEffect, useContext} from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import LogoutButton from './logout';
-import { checkLoggedin } from './App';
+import { checkLoggedin, CommonContext } from './App';
+
+import LoadingPage from './loading';
 
 function Mathapp({backendUrl, loggedin, setloggedin}) {
 
@@ -34,9 +36,12 @@ function Mathapp({backendUrl, loggedin, setloggedin}) {
     const [timeList, settimeList] = useState([]);
     const [startTime, setstartTime] = useState(0);
     const [timestop, settimestop] = useState(0);
+    const [responseSentence, setresponseSentence] = useState("")
 
     const turningLocation = useRef();
     const answerInput = useRef();
+
+    const {loading, setloading} = useContext(CommonContext)
 
     useEffect(()=> {
         checkLoggedin(setloggedin, backendUrl)
@@ -236,6 +241,7 @@ function Mathapp({backendUrl, loggedin, setloggedin}) {
                 settimestop(0)
                 setstartTime(0)
                 if(loggedin){
+                    setloading(true)
                     let dataSending = {
                         timesOfCalculating : noo, 
                         minTime : minTime, 
@@ -252,14 +258,17 @@ function Mathapp({backendUrl, loggedin, setloggedin}) {
                     .then(function(res) {
                         console.log(res.status,res.data)
                 
+                        setresponseSentence(res.data)
                         // if(res.data === 'loggedin') {
                         //   console.log('updated')
                         // }
                     }).catch((err) => {
                         console.log('hvnt logged in')
+                        setresponseSentence("error from server:" + err)
                     })
+                    setloading(false)
                 } else {
-
+                    setresponseSentence('login to update your personal data!')
                 }
      
                 
@@ -283,7 +292,7 @@ function Mathapp({backendUrl, loggedin, setloggedin}) {
             {/* <button onClick={sendData}>
                 submit
             </button> */}
-            
+            {loading && <LoadingPage text={'Loading...'}/>}
             
             </div>
             <div id='fa' className={hide?'fa fa-bars':'fa fa-bars show'} onClick={hideSettings}></div>
@@ -345,7 +354,7 @@ function Mathapp({backendUrl, loggedin, setloggedin}) {
                     <p>[enter]</p>
                 </div>
                 <div id='response'>{response}</div>
-                <div>{timeList}</div>
+                <div style={{color: "white"}}>{responseSentence}</div>
             </div>
 
         </div>

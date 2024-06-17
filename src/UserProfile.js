@@ -1,9 +1,11 @@
-import {React, useEffect, useState} from 'react';
+import {React, useEffect, useState, useContext} from 'react';
 import { Link } from 'react-router-dom';
 import LogoutButton from './logout';
 
-import { checkLoggedin } from './App';
+import { checkLoggedin, CommonContext } from './App';
 import axios from 'axios';
+
+import LoadingPage from './loading';
 
 // import { BSON } from 'bson';
 // import cloneDeepWith from 'lodash.clonedeepwith';
@@ -17,9 +19,12 @@ function UserProfile({backendUrl, loggedin, setloggedin}) {
   const [averagetime, setaveragetime] = useState('');
   const [totaltrialnumber, settotaltrialnumber] = useState('');
 
+  const {loading, setloading} = useContext(CommonContext)
+
   useEffect(()=>{
     checkLoggedin(setloggedin, backendUrl)
     async function fetchData(){
+        setloading(true)
         await axios.get(backendUrl + '/userProfile',{withCredentials: true})
         .then((res)=> {
             console.log(res.status, res.data)
@@ -35,12 +40,13 @@ function UserProfile({backendUrl, loggedin, setloggedin}) {
                 settotaltrialnumber(res.data.totaltrialnumber)
             }     
         }).catch((err)=>{
-            if(err) throw err
+            console.log(err)
         }) 
+        setloading(false)
     };
-
-    fetchData();
-
+    if (loggedin){
+        fetchData();
+    }
   })
     
 
@@ -48,6 +54,7 @@ function UserProfile({backendUrl, loggedin, setloggedin}) {
   
   return(
     <>
+        {loading && <LoadingPage text={'Loading...'}/>}
         <h1 style={{display: 'flex'}}>
         User Profile ({username}):
         {loggedin && <LogoutButton backendUrl={backendUrl} setloggedin={setloggedin}/>}
@@ -65,6 +72,8 @@ function UserProfile({backendUrl, loggedin, setloggedin}) {
                 <Link to="/mathapp">Mathapp</Link>
             </li>
         </ul>}
+        <Link to="/mathapp">Mathapp</Link>
+        <Link to="/home">Home</Link>
     </>
   );
 }
