@@ -65,14 +65,14 @@ function UserProfile({backendUrl, loggedin, setloggedin}) {
 
         {loggedin && <ul>
             <li>Minimum time per each calculation: {minTime} s</li>
-            <li>Average time per each calculation: {averagetime}</li>
+            <li>Average time per each calculation: {averagetime} s</li>
             <li>Game Played Total: {totaltrialnumber}</li>
             <li>
                 Continue practicing: 
                 <Link to="/mathapp">Mathapp</Link>
             </li>
-        </ul>}
-        <Link to="/mathapp">Mathapp</Link>
+        </ul>} 
+        {!loggedin &&<Link to="/mathapp">Mathapp</Link>}
         <Link to="/home">Home</Link>
     </>
   );
