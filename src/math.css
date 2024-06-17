@@ -7,7 +7,7 @@
     font-family: sans-serif;
 }
 body {
-    min-height: 100vh;
+    min-height: 500px;
     width: 100%;
     background: linear-gradient(pink,blue);
 }
@@ -25,15 +25,15 @@ body {
 
 }
 .turn-abacus h1 {
-    font-size: 2vh;
+    font-size: 30px;
     margin-right: 1vw;
 }
 .turning-location {
     background-color: rgba(163, 126, 52, 0.718);
     
     border: 2px solid rgb(93, 63, 24);
-    height: 3vh;
-    width: 6vh;
+    height: 20px;
+    width: 40px;
     border-radius: 3vh;
     display: flex;
     align-items: center;
@@ -44,8 +44,8 @@ body {
 }
 
 .turning-btn {
-    height: 2vh;
-    width: 2vh;
+    height: 18px;
+    width: 18px;
     background-color: rgba(115, 61, 32, 0.473);
     border: 0.5px solid black;
     border-radius: 50%;
@@ -58,12 +58,20 @@ body {
 input {
     background-color: palegoldenrod;
 }
-.input-setting div {
+
+.input-setting div{
     display: flex;
     align-items:center;
+    justify-content:space-between;
 }
-.input-setting div a, .question-answer-response div a {
-    font-size: auto;
+.input-setting a {
+    position: relative;
+    left: 50%;
+    
+}
+
+.input-setting a, .question-answer-response div a {
+    font-size: 21px;
     background-color: rgb(78, 152, 220);
     border-radius: 5px;
     border: 1px solid black;
@@ -72,8 +80,10 @@ input {
     min-width: 10vw;
     text-align: center;
     color: white;
-    margin-left: 1vw;
-    margin-right: 1vw;
+    padding-left: 15px;
+    padding-right: 15px;
+    /* margin-left: 1vw;
+    margin-right: 1vw; */
 }
 .input-setting div a:hover, .question-answer-response div a:hover {
     color:rgb(78, 152, 220);
@@ -109,9 +119,20 @@ p {
 .quesiton-answer-response div{
     display: flex;
 }
-i {
+
+#answer {
+    font-size: 21px;
+    margin-right: 5px;
+}
+.answer-row p {
+    font-size: 18px;
+}
+
+#fa {
     display: none;
 }
+
+
 
 #logoutbtn {
     background-color:rgba(119, 136, 153, 0.306);
@@ -124,6 +145,9 @@ i {
 
 
 @media (max-width: 1100px) {
+    #fa {
+        display: inline;
+    }
     .fa.fa-bars {
         font-size: 5vh;
         display: none;
@@ -136,13 +160,13 @@ i {
         display: none;
     }
     .input-setting{
-        font-size: 3vh;
+        font-size: 18px;
     }
     .input-setting.hide {
         display: none;
     }
     .input-setting input {
-        font-size: 3vh;
+        font-size: 28px;
     }
     .input-setting div {
         display: flex;
@@ -153,10 +177,13 @@ i {
         text-align: center;
     }
     .input-setting div a {
+        font-size: 30px;
         margin-top: 2vh;
+        padding-left: 15px;
+        padding-right: 15px;
     }
     .question-answer-response div h1{
-        font-size: 3vh;
+        font-size: 30px;
     }
     
     .question-answer-response.start {
@@ -166,10 +193,10 @@ i {
         align-items: center;
     }
     .question-answer-response.start div h1 {
-        font-size: 6vh;
+        font-size: 30px;
     }
     .question-answer-response.start #question, .question-answer-response.start #question div div {
-        font-size: 5vh;
+        font-size: 30px;
     }
     .answer-row {
         display: flex;
@@ -179,15 +206,22 @@ i {
         color: white;
     }
     .answer-row input, .answer-row a {
-        height: 3vh;
+        height: 30px;
         
     }
+    .answer-row input {
+        font-size: 32px;
+        max-width: 150px;
+    }
     .answer-row a {
-        font-size: 2vh;
+        font-size: 20px;
         padding-left: 1vh;
         padding-right: 1vh;
         display: flex;
         align-items: center;
+    }
+    .answer-row p {
+        font-size: 20px;
     }
 }
 

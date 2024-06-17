@@ -6,6 +6,8 @@ import { checkLoggedin, CommonContext } from './App';
 
 import LoadingPage from './loading';
 
+import BasicSpeedDial from './nav';
+
 function Mathapp({backendUrl, loggedin, setloggedin}) {
 
     // async function sendData() {
@@ -294,6 +296,7 @@ function Mathapp({backendUrl, loggedin, setloggedin}) {
             </button> */}
             {loading && <LoadingPage text={'Loading...'}/>}
             
+            
             </div>
             <div id='fa' className={hide?'fa fa-bars':'fa fa-bars show'} onClick={hideSettings}></div>
             <div className={hide?'turn-abacus':'turn-abacus hide'}>
@@ -309,11 +312,10 @@ function Mathapp({backendUrl, loggedin, setloggedin}) {
 
             <div className={hide? "input-setting" : "input-setting hide"}>
             {loggedin && <LogoutButton backendUrl={backendUrl} setloggedin={setloggedin}/>}
-            {!loggedin && 
+            {/* {!loggedin && 
                 <Link to="/login">Login</Link>
             }
-            {/* <Link to="/register">Register</Link> */}
-            <Link to="/home">Home</Link>
+            <Link to="/home">Home</Link> */}
                 <div>
                     <h1>
                         number of questions:
@@ -331,9 +333,10 @@ function Mathapp({backendUrl, loggedin, setloggedin}) {
                         times of operation:
                     </h1>
                     <input id="noo" type="number" value={noo} onChange={e => {setnoo(e.target.value)}}/>
-                    <a id="setting" onClick={startQuestionset}>Set</a>
+                    
                     {/* <p>[shift + enter]</p> */}
                 </div>
+                <a id="setting" onClick={startQuestionset}>Set</a>
 
             </div>
 
@@ -356,6 +359,7 @@ function Mathapp({backendUrl, loggedin, setloggedin}) {
                 <div id='response'>{response}</div>
                 <div style={{color: "white"}}>{responseSentence}</div>
             </div>
+            <BasicSpeedDial loggedin={loggedin}/>
 
         </div>
     )}
