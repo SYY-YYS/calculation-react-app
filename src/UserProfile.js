@@ -47,7 +47,7 @@ function UserProfile({backendUrl, loggedin, setloggedin}) {
     if (loggedin){
         fetchData();
     }
-  })
+  },[])
     
 
   
