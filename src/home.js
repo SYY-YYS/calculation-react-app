@@ -6,6 +6,8 @@ import { checkLoggedin, CommonContext } from './App';
 
 import BasicSpeedDial from './nav';
 
+import LoadingPage from './loading';
+
 function Home({backendUrl, loggedin, setloggedin}) {
 
   const {loading, setloading} = useContext(CommonContext)
