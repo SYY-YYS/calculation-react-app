@@ -63,6 +63,7 @@ function Mathapp({backendUrl, loggedin, setloggedin}) {
 
     function hideSettings() {
         sethide(prev => !prev);
+        setstart(prev => !prev);
     }
 
     function startQuestionset() {
@@ -70,6 +71,8 @@ function Mathapp({backendUrl, loggedin, setloggedin}) {
         setstart(prev => !prev);
         const currectTime = Date.now()/1000;
         setstartTime(currectTime);
+        setquestion('')
+        setquestionChild('')
         answerInput.current.focus();
         genQuestion()
     }

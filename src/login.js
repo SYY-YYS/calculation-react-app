@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom';
 
 import { CommonContext, checkLoggedin } from './App';
 import LoadingPage from './loading';
+
+import BasicSpeedDial from './nav';
+
 function LoginPage({backendUrl, loggedin, setloggedin}){
 
   useEffect(()=>{
@@ -72,9 +75,10 @@ function LoginPage({backendUrl, loggedin, setloggedin}){
       }
       {loggedin && <div>
         <h1>Welcome, you have logged in</h1>
-        <Link to="/mathapp">Mathapp</Link>
-        <Link to="/home">Home</Link>
+        {/* <Link to="/mathapp">Mathapp</Link>
+        <Link to="/home">Home</Link> */}
         </div>}
+        <BasicSpeedDial loggedin={loggedin}/>
     </>
   )
 }

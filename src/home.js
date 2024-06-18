@@ -4,6 +4,8 @@ import LogoutButton from './logout';
 
 import { checkLoggedin } from './App';
 
+import BasicSpeedDial from './nav';
+
 function Home({backendUrl, loggedin, setloggedin}) {
 
   checkLoggedin(setloggedin, backendUrl)
@@ -25,6 +27,7 @@ function Home({backendUrl, loggedin, setloggedin}) {
                 <Link to="/userprofile">UserProfile</Link>
             </li>}
         </ul>
+        <BasicSpeedDial loggedin={loggedin}/>
     </>
   );
 }

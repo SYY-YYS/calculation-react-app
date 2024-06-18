@@ -7,6 +7,7 @@ import axios from 'axios';
 
 import LoadingPage from './loading';
 
+import BasicSpeedDial from './nav';
 // import { BSON } from 'bson';
 // import cloneDeepWith from 'lodash.clonedeepwith';
 
@@ -72,8 +73,9 @@ function UserProfile({backendUrl, loggedin, setloggedin}) {
                 <Link to="/mathapp">Mathapp</Link>
             </li>
         </ul>} 
-        {!loggedin &&<Link to="/mathapp">Mathapp</Link>}
-        <Link to="/home">Home</Link>
+        {/* {!loggedin &&<Link to="/mathapp">Mathapp</Link>}
+        <Link to="/home">Home</Link> */}
+        <BasicSpeedDial loggedin={loggedin}/>
     </>
   );
 }

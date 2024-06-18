@@ -7,6 +7,8 @@ import { checkLoggedin, CommonContext } from './App';
 
 import LoadingPage from './loading';
 
+import BasicSpeedDial from './nav';
+
 
 function RegisterPage({backendUrl, loggedin, setloggedin}){
 
@@ -86,8 +88,9 @@ function RegisterPage({backendUrl, loggedin, setloggedin}){
       </div>}
       {loggedin&& <div>
         <h1>You have logged in, you may log out for registering a new account</h1>
-        <Link to="/home">Home</Link>
+        {/* <Link to="/home">Home</Link> */}
         </div>}
+        <BasicSpeedDial loggedin={loggedin}/>
     </>
   )
 }
