@@ -23,7 +23,7 @@ function UserProfile({backendUrl, loggedin, setloggedin}) {
   const {loading, setloading} = useContext(CommonContext)
 
   useEffect(()=>{
-    checkLoggedin(setloggedin, backendUrl)
+    checkLoggedin(setloading, setloggedin, backendUrl)
     async function fetchData(){
         setloading(true)
         await axios.get(backendUrl + '/userProfile',{withCredentials: true})

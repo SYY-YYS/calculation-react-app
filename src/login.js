@@ -10,9 +10,7 @@ import BasicSpeedDial from './nav';
 
 function LoginPage({backendUrl, loggedin, setloggedin}){
 
-  useEffect(()=>{
-    checkLoggedin(setloggedin, backendUrl)
-  },[])
+  
   
 
   const [username, setusername] = useState("")
@@ -20,6 +18,9 @@ function LoginPage({backendUrl, loggedin, setloggedin}){
   const [responseSentence, setresponseSentence] = useState("")
   const {loading, setloading} = useContext(CommonContext)
 
+  useEffect(()=>{
+    checkLoggedin(setloading,setloggedin, backendUrl)
+  },[])
 
   async function submitForm(event) {
     event.preventDefault();

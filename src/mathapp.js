@@ -46,7 +46,7 @@ function Mathapp({backendUrl, loggedin, setloggedin}) {
     const {loading, setloading} = useContext(CommonContext)
 
     useEffect(()=> {
-        checkLoggedin(setloggedin, backendUrl)
+        checkLoggedin(setloading, setloggedin, backendUrl)
     }, [startTime])
 
     function handleKeyDown (event) {

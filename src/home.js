@@ -1,17 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import LogoutButton from './logout';
 
-import { checkLoggedin } from './App';
+import { checkLoggedin, CommonContext } from './App';
 
 import BasicSpeedDial from './nav';
 
 function Home({backendUrl, loggedin, setloggedin}) {
 
-  checkLoggedin(setloggedin, backendUrl)
+  const {loading, setloading} = useContext(CommonContext)
+
+  checkLoggedin(setloading, setloggedin, backendUrl)
   
   return(
     <>
+        {loading && <LoadingPage text={'Loading...'}/>}
         <h1 style={{display: 'flex'}}>
           Home Page
         {loggedin && <LogoutButton backendUrl={backendUrl} setloggedin={setloggedin}/>}

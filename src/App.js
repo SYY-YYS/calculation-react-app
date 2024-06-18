@@ -16,7 +16,8 @@ import axios from 'axios';
 export const CommonContext = createContext()
 
 
-export async function checkLoggedin(setloggedin, backendUrl) {
+export async function checkLoggedin(setloading, setloggedin, backendUrl) {
+  setloading(true)
   await axios.get(backendUrl + '/login',{withCredentials: true})
   .then((res)=> {
     console.log(res.status, res.data)
@@ -31,6 +32,7 @@ export async function checkLoggedin(setloggedin, backendUrl) {
     // if(err) throw err
     setloggedin(false);
   }) 
+  setloading(false)
 }
 
 function App() {

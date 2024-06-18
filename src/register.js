@@ -12,9 +12,7 @@ import BasicSpeedDial from './nav';
 
 function RegisterPage({backendUrl, loggedin, setloggedin}){
 
-  useEffect(()=>{
-    checkLoggedin(setloggedin, backendUrl)
-  },[])
+  
 
   const navigate = useNavigate();
 
@@ -23,6 +21,11 @@ function RegisterPage({backendUrl, loggedin, setloggedin}){
   const [password, setpassword] = useState("") 
   const [passwordCheck, setpasswordCheck] = useState('')
   const {loading, setloading} = useContext(CommonContext)
+
+
+  useEffect(()=>{
+    checkLoggedin(setloading, setloggedin, backendUrl)
+  },[])
 
   async function submitForm(event) {
     event.preventDefault();
