@@ -93,7 +93,7 @@ function RegisterPage({backendUrl, loggedin, setloggedin}){
         <h1>You have logged in, you may log out for registering a new account</h1>
         {/* <Link to="/home">Home</Link> */}
         </div>}
-        <BasicSpeedDial loggedin={loggedin}/>
+        <BasicSpeedDial setloading={setloading} backendUrl={backendUrl} setloggedin={setloggedin} loggedin={loggedin}/>
     </>
   )
 }

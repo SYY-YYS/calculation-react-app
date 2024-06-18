@@ -58,7 +58,7 @@ function UserProfile({backendUrl, loggedin, setloggedin}) {
         {loading && <LoadingPage text={'Loading...'}/>}
         <h1 style={{display: 'flex'}}>
         User Profile ({username}):
-        {loggedin && <LogoutButton backendUrl={backendUrl} setloggedin={setloggedin}/>}
+        {/* {loggedin && <LogoutButton backendUrl={backendUrl} setloggedin={setloggedin}/>} */}
         {!loggedin && <button>
             <Link to="/login">Login</Link>
         </button>}
@@ -75,7 +75,7 @@ function UserProfile({backendUrl, loggedin, setloggedin}) {
         </ul>} 
         {/* {!loggedin &&<Link to="/mathapp">Mathapp</Link>}
         <Link to="/home">Home</Link> */}
-        <BasicSpeedDial loggedin={loggedin}/>
+        <BasicSpeedDial setloading={setloading} backendUrl={backendUrl} setloggedin={setloggedin} loggedin={loggedin}/>
     </>
   );
 }

@@ -14,22 +14,28 @@ import HomeIcon from '@mui/icons-material/Home';
 
 import { useNavigate } from 'react-router-dom';
 
+import logout from './logout';
 
 const actions = [
   { icon: <HomeIcon />, name: 'Home', link: '/home'},
   { icon: <FunctionsIcon />, name: 'MathApp', link:'/mathapp'},
   { icon: <LoginIcon />, name: 'Login', link:'/login'},
-  { icon: <LogoutIcon />, name: 'Logout', link:'/login'},
+  { icon: <LogoutIcon />, name: 'Logout', link:'/logout'},
   { icon: <AlignHorizontalLeftIcon />, name: 'UserProfile', link:'/userprofile'},
 ];
 
-export default function BasicSpeedDial({loggedin}) {
+export default function BasicSpeedDial({setloading, backendUrl, setloggedin, loggedin}) {
 
     const navigate = useNavigate();
 
     function navigating(path){
+      if (path === '/logout'){
+        logout(setloading, backendUrl, setloggedin)
+      } else {
         navigate(path)
+      }
     }
+
   return (
     <Box id='nav' sx={{height: 320, transform: 'translateZ(0px)', flexGrow: 1}}>
       <SpeedDial

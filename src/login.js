@@ -79,7 +79,7 @@ function LoginPage({backendUrl, loggedin, setloggedin}){
         {/* <Link to="/mathapp">Mathapp</Link>
         <Link to="/home">Home</Link> */}
         </div>}
-        <BasicSpeedDial loggedin={loggedin}/>
+        <BasicSpeedDial setloading={setloading} backendUrl={backendUrl} setloggedin={setloggedin} loggedin={loggedin}/>
     </>
   )
 }

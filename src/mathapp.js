@@ -314,7 +314,7 @@ function Mathapp({backendUrl, loggedin, setloggedin}) {
             </div>
 
             <div className={hide? "input-setting" : "input-setting hide"}>
-            {loggedin && <LogoutButton backendUrl={backendUrl} setloggedin={setloggedin}/>}
+            {/* {loggedin && <LogoutButton backendUrl={backendUrl} setloggedin={setloggedin}/>} */}
             {/* {!loggedin && 
                 <Link to="/login">Login</Link>
             }
@@ -362,7 +362,7 @@ function Mathapp({backendUrl, loggedin, setloggedin}) {
                 <div id='response'>{response}</div>
                 <div style={{color: "white"}}>{responseSentence}</div>
             </div>
-            <BasicSpeedDial loggedin={loggedin}/>
+            <BasicSpeedDial setloading={setloading} backendUrl={backendUrl} setloggedin={setloggedin} loggedin={loggedin}/>
 
         </div>
     )}
