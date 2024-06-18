@@ -68,7 +68,7 @@ function RegisterPage({backendUrl, loggedin, setloggedin}){
       {!loggedin &&<div>
         <h1>Register Page</h1>
         <form onSubmit={submitForm}>
-          <div className='input-group'>
+          <div className='register-input'>
             <label>Username:
               <input required type='text' name='username' onChange={e => {setusername(e.target.value)}}></input>
             </label>
@@ -85,7 +85,7 @@ function RegisterPage({backendUrl, loggedin, setloggedin}){
               <input required type='password' name='password' onChange={e => {checkpassword(e.target.value)}}></input>
               <p>{passwordCheck}</p>
             </label>
-            <input type='submit' value="Submit"></input>
+            <input className='submitBtn' type='submit' value="Submit"></input>
           </div>
         </form>
       </div>}

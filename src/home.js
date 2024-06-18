@@ -17,7 +17,7 @@ function Home({backendUrl, loggedin, setloggedin}) {
   
   return(
     <>
-        {loading && <LoadingPage text={'Loading...'}/>}
+        {loading && <LoadingPage text={'Loading...\nfirst load may take a minute'}/>}
         <h1 style={{display: 'flex'}}>
           Home Page
         {/* {loggedin && <LogoutButton backendUrl={backendUrl} setloggedin={setloggedin}/>} */}

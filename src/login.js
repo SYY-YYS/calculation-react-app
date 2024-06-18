@@ -57,7 +57,7 @@ function LoginPage({backendUrl, loggedin, setloggedin}){
       {!loggedin &&<div>
         <h1>Login Page</h1>
         <form onSubmit={submitForm}>
-          <div className='input-group'>
+          <div className='login-input'>
             <label>Username:
               <input required type='text' name='username' onChange={e => {setusername(e.target.value)}}></input>
             </label>
@@ -66,7 +66,7 @@ function LoginPage({backendUrl, loggedin, setloggedin}){
               <input required type='password' name='password' onChange={e => {setpassword(e.target.value)}}></input>
             </label>
             <br></br>
-            <input type='submit' value="Submit"></input>
+            <input className='submitBtn' type='submit' value="Submit"></input>
           </div>
         </form>
         <p style={{color: "white"}}>{responseSentence}</p>
