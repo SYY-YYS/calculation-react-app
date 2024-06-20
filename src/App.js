@@ -13,6 +13,8 @@ import RegisterPage from './register';
 import UserProfile from './UserProfile';
 import axios from 'axios';
 
+import MemDigits from './memDigits';
+
 export const CommonContext = createContext()
 
 
@@ -54,7 +56,9 @@ function App() {
           <Route path='/mathapp' element={<Mathapp backendUrl={backendUrl} loggedin={loggedin} setloggedin={setloggedin}/>}></Route>
           <Route path='/register' element={<RegisterPage backendUrl={backendUrl} loggedin={loggedin} setloggedin={setloggedin}/>}></Route>
           <Route path='/userprofile' element={<UserProfile backendUrl={backendUrl} loggedin={loggedin} setloggedin={setloggedin}/>}></Route>
+          <Route path='/hidden' element={<MemDigits />}></Route>
           <Route path='*' element={<Navigate to='/' />}></Route>
+          
         </Routes>
       </Router>
     </CommonContext.Provider>
