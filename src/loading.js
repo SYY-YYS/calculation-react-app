@@ -47,7 +47,7 @@ function LoadingPage({text}){
 
     useEffect(()=>{
         genQuestion()
-        console.log(getComputedStyle(document.getElementById('loadingicon')))
+        // console.log(getComputedStyle(document.getElementById('loadingicon')))
     },[numofdigit])
 
 
