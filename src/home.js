@@ -32,9 +32,9 @@ function Home({backendUrl, loggedin, setloggedin}) {
             {loggedin && <li>
                 <Link to="/userprofile">UserProfile</Link>
             </li>}
-            <li>
+            {/* <li>
               <Link to='/hidden'>mem</Link>
-            </li>
+            </li> */}
         </ul>
         <BasicSpeedDial setloading={setloading} backendUrl={backendUrl} setloggedin={setloggedin}  loggedin={loggedin}/>
     </>

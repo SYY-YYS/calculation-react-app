@@ -10,7 +10,6 @@ function MemDigits(){
     const [numofdigit, setnumofdigit] = useState(5)
 
 
-    var trueAns;
     function drawNum(digits) {
         let gennum = ''
         for (let i=0; i< digits; i++) {
@@ -32,6 +31,7 @@ function MemDigits(){
             // genQuestion()
         } else {
             setnumofdigit(prev => prev - 1)
+            setanswer('')
         }
     }
     
