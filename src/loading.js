@@ -27,12 +27,11 @@ function LoadingPage({text}){
         if(genNumber === answer) {
             setnumofdigit(prev => prev + 1)
             setgenNumber('')
-            setanswer('')
             
-            // genQuestion()
         } else {
             setnumofdigit(prev => prev - 1)
         }
+        setanswer('')
     }
     
 
