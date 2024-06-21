@@ -47,12 +47,14 @@ function LoadingPage({text}){
 
     useEffect(()=>{
         genQuestion()
+        console.log(getComputedStyle(document.getElementById('loadingicon')))
     },[numofdigit])
 
 
     return(
         <>
             <Backdrop
+            id='loadingicon'
             sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
             open
             >
