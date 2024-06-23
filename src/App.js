@@ -23,9 +23,10 @@ export async function checkLoggedin(setloading, setloggedin, backendUrl) {
   await axios.get(backendUrl + '/login',{withCredentials: true})
   .then((res)=> {
     console.log(res.status, res.data)
-    if (res.data) {
-      setloggedin(true);
-      return res.data;
+    if (res.data === 'token expired') {
+      setloggedin(false);
+    } else if (res.data) {
+      setloggedin(true)
     } else {
       setloggedin(false);
     }

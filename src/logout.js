@@ -3,8 +3,12 @@ import axios from 'axios';
 
 
 
-export default async function logout(setloading, backendUrl, setloggedin) {
+export default async function Logout(setloading, backendUrl, setloggedin) {
     setloading(true)
+    // destroy the jwt cookie (httpOnly cookie cant be destroyed)
+
+    console.log(document.cookie)
+
     await axios.post(backendUrl + "/logout",{}, {
         withCredentials: true,
         headers: {
