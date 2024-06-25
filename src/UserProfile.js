@@ -26,7 +26,12 @@ function UserProfile({backendUrl, loggedin, setloggedin}) {
     checkLoggedin(setloading, setloggedin, backendUrl)
     async function fetchData(){
         setloading(true)
-        await axios.get(backendUrl + '/userProfile',{withCredentials: true})
+        await axios.get(backendUrl + '/userProfile',{ 
+            withCredentials: true,
+            headers: {
+                "Authorization": `Bearer ${localStorage.getItem("token")}`
+              }
+        })
         .then((res)=> {
             console.log(res.status, res.data)
             if (res.data) {
