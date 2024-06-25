@@ -257,7 +257,8 @@ function Mathapp({backendUrl, loggedin, setloggedin}) {
                     await axios.post(backendUrl + '/dataOperation/update', dataSending, {
                         withCredentials: true,
                         headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        "Authorization": `Bearer ${localStorage.getItem("token")}`
                         }
                     })
                     .then(function(res) {
