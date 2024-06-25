@@ -45,6 +45,7 @@ function LoginPage({backendUrl, loggedin, setloggedin}){
         setresponseSentence("[" + res.data + "]")
       } else {
         localStorage.setItem("token", res.data)
+        setloggedin(true); //wont refresh after login lol (prob becoz preventDefault)
       }
     }).catch((err) => {
         console.log(err)
