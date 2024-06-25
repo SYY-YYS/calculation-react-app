@@ -5,7 +5,8 @@ import axios from 'axios';
 
 export default async function Logout(setloading, backendUrl, setloggedin) {
     setloading(true)
-    // destroy the jwt cookie (httpOnly cookie cant be destroyed)
+    // destroy the jwt (httpOnly cookie cant be destroyed)
+    localStorage.clear();
 
     console.log(document.cookie)
 

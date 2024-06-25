@@ -20,7 +20,12 @@ export const CommonContext = createContext()
 
 export async function checkLoggedin(setloading, setloggedin, backendUrl) {
   setloading(true)
-  await axios.get(backendUrl + '/login',{withCredentials: true})
+  await axios.get(backendUrl + '/login',{
+    withCredentials: true,
+    headers: {
+      "Authorization": `Bearer ${localStorage.getItem("token")}`
+    }
+  })
   .then((res)=> {
     console.log(res.status, res.data)
     if (res.data === 'token expired') {

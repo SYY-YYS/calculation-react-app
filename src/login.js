@@ -41,15 +41,16 @@ function LoginPage({backendUrl, loggedin, setloggedin}){
       if(res.data === 'loggedin') {
         console.log('loggedin')
         setloggedin(true); 
-      } else {
+      } else if (res.status === 403 ) {
         setresponseSentence("[" + res.data + "]")
+      } else {
+        localStorage.setItem("token", res.data)
       }
     }).catch((err) => {
         console.log(err)
         setresponseSentence("[Error, server not connected]")
     })
     setloading(false)
-    return redirect('/')
   } 
   return(
     <>
