@@ -9,6 +9,7 @@ import LoadingPage from './loading';
 
 import BasicSpeedDial from './nav';
 
+import googleLogo from "./images/google-logo.png"
 
 function RegisterPage({backendUrl, loggedin, setloggedin}){
 
@@ -26,6 +27,13 @@ function RegisterPage({backendUrl, loggedin, setloggedin}){
   useEffect(()=>{
     checkLoggedin(setloading, setloggedin, backendUrl)
   },[])
+
+  const googleAuth = () => {
+    window.open(
+      `${backendUrl}/auth/google/callback`,
+      "_self"
+    );
+  };
 
   async function submitForm(event) {
     event.preventDefault();
@@ -86,6 +94,14 @@ function RegisterPage({backendUrl, loggedin, setloggedin}){
               <p>{passwordCheck}</p>
             </label>
             <input className='submitBtn' type='submit' value="Submit"></input>
+            <button className='google-login' onClick={googleAuth} style={{
+              display: "flex",
+              alignItems: "center",
+              marginTop: "5px" 
+            }}>
+              <img src={googleLogo} style={{height: "18px"}}></img>
+              <span>Sign up with Google</span>
+            </button>
           </div>
         </form>
       </div>}
