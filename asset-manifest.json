@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/calculation-react-app/static/css/main.663c0a5b.css",
-    "main.js": "/calculation-react-app/static/js/main.efe3dc4b.js",
+    "main.js": "/calculation-react-app/static/js/main.e8ff4f06.js",
     "static/media/google-logo.png": "/calculation-react-app/static/media/google-logo.7c301fd6a8d5b45b3c23.png",
     "index.html": "/calculation-react-app/index.html",
     "main.663c0a5b.css.map": "/calculation-react-app/static/css/main.663c0a5b.css.map",
-    "main.efe3dc4b.js.map": "/calculation-react-app/static/js/main.efe3dc4b.js.map"
+    "main.e8ff4f06.js.map": "/calculation-react-app/static/js/main.e8ff4f06.js.map"
   },
   "entrypoints": [
     "static/css/main.663c0a5b.css",
-    "static/js/main.efe3dc4b.js"
+    "static/js/main.e8ff4f06.js"
   ]
 }
