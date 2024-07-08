@@ -30,7 +30,7 @@ function RegisterPage({backendUrl, loggedin, setloggedin}){
 
   const googleAuth = () => {
     window.open(
-      `${backendUrl}/auth/google/callback`,
+      `${backendUrl}/login/google`,
       "_self"
     );
   };

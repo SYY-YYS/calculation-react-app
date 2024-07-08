@@ -25,6 +25,7 @@ function LoginPage({backendUrl, loggedin, setloggedin}){
   },[])
 
   const googleAuth = () => {
+    // change it to get?
     window.open(
       `${backendUrl}/login/google`,
       "_self"
