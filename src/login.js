@@ -24,12 +24,22 @@ function LoginPage({backendUrl, loggedin, setloggedin}){
     checkLoggedin(setloading,setloggedin, backendUrl)
   },[])
 
-  const googleAuth = () => {
+  const googleAuth = async () => {
     // change it to get?
-    window.open(
-      `${backendUrl}/login/google`,
-      "_self"
-    );
+    // window.open(
+    //   `${backendUrl}/login/google`,
+    //   "_self"
+    // );
+    // await axios.get(backendUrl + '/login/google', {
+    //   withCredentials: true,
+    //   headers: {
+    //     'Content-Type': 'application/x-www-form-urlencoded',
+    //     // 'Access-Control-Allow-Origin': process.env.REACT_APP_Backend_URL
+    //   }
+    // })
+    // .then(function(res) {
+    //   console.log(res.status,res.data)})
+
   };
 
   async function submitForm(event) {
@@ -82,14 +92,14 @@ function LoginPage({backendUrl, loggedin, setloggedin}){
           </div>
         </form>
         <p style={{color: "white"}}>{responseSentence}</p>
-        <button className='google-login' onClick={googleAuth} style={{
+        <a href={`${backendUrl}/login/google`}><button className='google-login' onClick={googleAuth} style={{
           display: "flex",
           alignItems: "center",
           marginTop: "5px" 
         }}>
           <img src={googleLogo} style={{height: "18px"}}></img>
           <span>Sign in with Google</span>
-        </button>
+        </button></a>
       </div>}
       {!loggedin && 
       <Link to="/register">Register</Link>
