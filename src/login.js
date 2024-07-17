@@ -98,7 +98,7 @@ function LoginPage({backendUrl, loggedin, setloggedin}){
           marginTop: "5px" 
         }}>
           <img src={googleLogo} style={{height: "18px"}}></img>
-          <span>Sign in with Google</span>
+          <span>Sign in with Google (maintenance)</span>
         </button></a>
       </div>}
       {!loggedin && 
