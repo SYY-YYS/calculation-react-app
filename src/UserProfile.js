@@ -29,7 +29,8 @@ function UserProfile({backendUrl, loggedin, setloggedin}) {
         await axios.get(backendUrl + '/userProfile',{ 
             withCredentials: true,
             headers: {
-                "Authorization": `Bearer ${localStorage.getItem("token")}`
+                "Authorization": `Bearer ${localStorage.getItem("token")}`,
+                'Access-Control-Allow-Origin': backendUrl
               }
         })
         .then((res)=> {
