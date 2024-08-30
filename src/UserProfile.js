@@ -30,7 +30,7 @@ function UserProfile({backendUrl, loggedin, setloggedin}) {
             withCredentials: true,
             headers: {
                 "Authorization": `Bearer ${localStorage.getItem("token")}`,
-                'Access-Control-Allow-Origin': backendUrl
+                // 'Access-Control-Allow-Origin': backendUrl
               }
         })
         .then((res)=> {
